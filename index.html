@@ -8,21 +8,19 @@
 </body>
 <script>
 	var items = [
-		[1, "Vestes de costume"],
-		[7, "Pantalons de costume"],
-		[13, "Pulls"],
-		[16, "Chemises"],
-		[22, "Pantalons"],
-		[32, "T-shirts"],
-		[44, "Vestes"],
-		[51, "Jeans"],
-		[56, "Shorts"],
-		[62, "Chaussures"]
+		[1, "Vestes de costume", "6000$"],
+		[7, "Pantalons de costume", "3000$"],
+		[13, "Pulls", "3000$"],
+		[16, "Chemises", "4000$"],
+		[22, "Pantalons", "5000$"],
+		[32, "T-shirts", "4000$"],
+		[44, "Vestes", "6000$"],
+		[51, "Jeans", "4500$"],
+		[56, "Shorts", "4250$"],
+		[62, "Chaussures", "4000$"]
 	];
 
-	var j = 0;
-	var categ;
-	var div;
+	var categ, div;
 
 	for (var i = 1; i < 86; i++)
 	{		
@@ -30,10 +28,16 @@
 		{
 			if (items[k][0] == i)
 			{
+				if (i != 1)
+				{
+					var br = document.createElement("br");
+					div.appendChild(br);
+				}
+
 				categ = k;
 
 				div = document.createElement("div");
-				div.style = "border: solid black; width: 75%; margin: auto";
+				div.style = "border: solid black; width: 75%; margin: auto; padding-bottom: 120px";
 				div.id = items[k][1];
 				document.getElementById("body").appendChild(div)
 
@@ -44,7 +48,7 @@
 				var a = document.createElement("h1");
 				a.innerHTML = items[k][1];
 				a.style = "color: white"
-				document.getElementById(items[k][1]).appendChild(a);
+				div.appendChild(a);
 
 				var br = document.createElement("br");
 				document.getElementById("body").appendChild(br);
@@ -54,13 +58,30 @@
 			}
 		}	
 
+		var imgdiv = document.createElement("div");
+		imgdiv.style = "display: inline-block;"
+		div.appendChild(imgdiv);
+
 		var img = document.createElement("img");
 		img.src = `img/${i}.png`;
-		img.style = "transform: scale(0.5);";
-		console.log(categ);
-		document.getElementById(items[categ][1]).appendChild(img);
+		img.style = "transform: scale(0.5); margin: auto";
+		imgdiv.appendChild(img);
 	
-		j++;
+		var br = document.createElement("br");
+		imgdiv.appendChild(br);
+
+		var desc = document.createElement("a");
+		desc.innerHTML = `Référence : ${i}`;
+		desc.style = "color: white"
+		imgdiv.appendChild(desc);		
+
+		var br = document.createElement("br");
+		imgdiv.appendChild(br);
+
+		var price = document.createElement("a");
+		price.innerHTML = `Prix : ${items[categ][2]}`;
+		price.style = "color: white";
+		imgdiv.appendChild(price);
 	}
 </script>
 </html>
