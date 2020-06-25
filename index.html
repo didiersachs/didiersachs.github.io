@@ -2,14 +2,52 @@
 <head>
 	<title>Didier Sachs</title>
 </head>
-<body id="body">
+<body id="body" style="display: inline-block; margin: 0px auto; text-align: center;">
+<h1>wesh didier sachs</h1>
 </body>
 <script>
+	var items = [
+		[1, "Vestes de costume"],
+		[7, "Pantalons de costume"],
+		[13, "Pulls"],
+		[16, "Chemises"],
+		[22, "Pantalons"],
+		[32, "T-shirts"],
+		[44, "Vestes"],
+		[51, "Jeans"],
+		[56, "Shorts"],
+		[62, "Chaussures"]
+	];
+
+	var j = 0;
 	for (var i = 1; i < 86; i++)
-	{
+	{		
+		for (var k = 0; k < items.length; k++)
+		{
+			if (items[k][0] == i)
+			{
+				var br = document.createElement("br");
+				document.getElementById("body").appendChild(br);
+				document.getElementById("body").appendChild(br);
+
+				var a = document.createElement("a");
+				a.innerHTML = items[k][1];
+				document.getElementById("body").appendChild(a);
+
+				var br = document.createElement("br");
+				document.getElementById("body").appendChild(br);
+				document.getElementById("body").appendChild(br);
+
+				continue;
+			}
+		}	
+
 		var img = document.createElement("img");
 		img.src = `img/${i}.png`;
-		document.getElementById('body').appendChild(img);
+		img.style = "transform: scale(0.5)";
+		document.getElementById("body").appendChild(img);
+	
+		j++;
 	}
 </script>
 </html>
